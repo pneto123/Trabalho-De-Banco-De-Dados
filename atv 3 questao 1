@@ -1,0 +1,15 @@
+DELIMITER //
+CREATE FUNCTION InserirAluno(cod_curso INTEGER,
+    dat_nasc DATE, 
+    tot_cred INTEGER,
+    mgp DOUBLE,
+    nom_alun VARCHAR (60), 
+    email VARCHAR (30)) RETURNS VARCHAR(50) DETERMINISTIC
+    
+BEGIN
+    INSERT INTO aluno VALUES(default,cod_curso,dat_nasc,tot_cred,mgp,nom_alun,email);
+    RETURN nom_alun;
+END//
+DELIMITER ;
+
+SELECT InserirAluno(5,'2001-07-11',60,8.75,'mamba','mamba@gmail.com') as Aluno;
