@@ -35,7 +35,7 @@ BEGIN
       
         
 	END LOOP itens;
-	      CLOSE busca_itens;
+	    CLOSE busca_itens;
 	      
 END //
 DELIMITER ;
