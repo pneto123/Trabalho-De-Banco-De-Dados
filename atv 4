@@ -5,14 +5,14 @@ DELIMITER //
 BEGIN
 	
     DECLARE vtotal_itens FLOAT(10,2);
-	DECLARE nVenda FLOAT(10,2);
-	DECLARE idVenda FLOAT(10,2);
+    DECLARE nVenda FLOAT(10,2);
+    DECLARE idVenda FLOAT(10,2);
     DECLARE venda FLOAT(10,2);
     DECLARE fimLoop INT DEFAULT 0;
     
     
     DECLARE busca_itens CURSOR FOR 
-		SELECT e.n_numeivenda,sum(v.n_valovenda)
+	SELECT e.n_numeivenda,sum(v.n_valovenda)
         FROM comivenda e
         inner join comvenda v
         WHERE e.n_numevenda = v.c_codivenda;
@@ -23,15 +23,15 @@ BEGIN
     
     itens : LOOP 
     IF fimLoop = 1 THEN 
-			LEAVE itens;
+		LEAVE itens;
 		END IF;
     
 		FETCH busca_itens into idVenda,nVenda;
         
 		SET vtotal_itens = nVenda;
         
-		UPDATE comvenda SET n_totavenda = vtotal_itens
-        WHERE n_numevenda = NEW.n_numevenda limit 1;
+     UPDATE comvenda SET n_totavenda = vtotal_itens
+          WHERE n_numevenda = NEW.n_numevenda limit 1;
       
         
 	END LOOP itens;
