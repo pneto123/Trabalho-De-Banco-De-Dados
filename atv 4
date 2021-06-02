@@ -31,7 +31,7 @@ BEGIN
 		SET vtotal_itens = nVenda;
         
      UPDATE comvenda SET n_totavenda = vtotal_itens
-          WHERE n_numevenda = NEW.n_numevenda limit 1;
+         WHERE n_numevenda = NEW.n_numevenda limit 1;
       
         
 	END LOOP itens;
